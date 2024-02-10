@@ -51,6 +51,24 @@ class SandwichMachine:
     def process_coins(self):
         """Returns the total calculated from coins inserted.
            Hint: include input() function here, e.g. input("how many quarters?: ")"""
+        total = 0
+        coins = {
+            "large dollars": 1,
+            "half dollars": 0.5,
+            "quarters": 0.25,
+            "nickels": 0.05
+        }
+        for coin, value in coins.items():
+            num_coins = int(input(f"How many {coin}?: "))
+            total += num_coins * value
+        change = total - cost
+        if change < 0:
+            print("Sorry, that's not enough money. Money refunded.")
+            return False
+        else:
+            if change > 0:
+                print(f"Here is ${change:.2f} in change.")
+            return total
 
     def transaction_result(self, coins, cost):
         """Return True when the payment is accepted, or False if money is insufficient.
